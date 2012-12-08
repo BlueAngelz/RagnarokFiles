@@ -1,0 +1,539 @@
+function	script	HelloMalQuestCheck	{
+	if ((checkquest(7352)==2) && (checkquest(7353)==2) && (checkquest(7354)==2) && (checkquest(7355)==2) && (checkquest(7356)==2) && (checkquest(7357)==2)){
+	next;
+	mes "- So many have already asked you for this. Perhaps it will be better to speak with Phong in Mumbaki.-";
+	setquest 7358;
+	}
+	return;
+}
+
+function	script	HelloMalQuestBHCheck	{
+	if(countitem(717)<1 && countitem(523)<1){
+	mes "^2652FFPrepare and give Blue Gemstone and Holy Water.^000000";
+	close;
+	}
+	}
+	return;
+}
+
+malaya,266,76,3	script	Rodel the Guard#mal01	570,4,4,{
+if (checkquest(7350) == 2){
+	mes "[Rodel the Guard]";
+	mes "Please understand even if people look at you warily. ";
+	mes "The ghost have been haunting the people around here.";
+	close;
+}
+	if (checkquest(7350) == 1){
+		mes "[Rodel the Guard]";
+		mes "Meet with Phong in Mumbaki first.";
+		mes "If you are proven to have a pure soul, other villagers will not avoid you.";
+		mes "If you are not sure of the location, I will mark it on your map.";
+		viewpoint 1,185,358,1,0xA82FF;
+		close;
+	}
+mes "[Rodel the Guard]";
+mes "Traveling at such confusing times?";
+mes "Villagers have been feeling more threatened by evil spirits recently.";
+mes "Villagers are scared and trembling with fear.";
+next;
+mes "[Rodel the Guard]";
+mes "So... the citizens of Port Malaya will feel uncomfortable around you even though there are no hard feelings toward you.";
+mes "Inns and stops may be closed to outsiders.";
+next;
+mes "[Rodel the Guard]";
+mes "There is no definite solution to this, but you might want to meet Phong in Mumbaki first.";
+mes "If the village leader gives his confirmation, other people might be less worried.";
+next;
+mes "[Rodel the Guard]";
+mes "I will mark on the map the location of Phong in Mumbaki.";
+mes "I welcome your visit though the times are harsh.";
+viewpoint 1,185,358,1,0xA82FF;
+setquest 7350;
+close;
+
+OnTouch:
+emotion 0;
+end;
+}
+
+malaya,185,358,3	script	Leader Phong in Mumbaki	580,{
+if (checkquest(7358)==1){
+mes "[Phong in Mumbaki]";
+mes "Holy Water and Blue Gemstone you spoke of will function well. ";
+mes "I hope they can set aside their fear and worries this way...";
+close;
+}
+
+if (checkquest(7350)==1){
+mes "[Phong in Mumbaki]";
+mes "Is there something wrong?";
+mes "You look disturbed.";
+mes "Your clothes also look messed up. Was there some kind of trouble?";
+next;
+switch(select("Explain what happened.:There is nothing to talk about.")) {
+case 1:
+mes "[Phong in Mumbaki]";
+mes "Is that so?";
+mes "Ha ha... that is a big problem. ";
+mes "You must've been concerned.";
+next;
+mes "[Phong in Mumbaki]";
+mes "You know, we were preparing a spiritual protection for ";
+mes "villagers who are afraid of evil spirits...";
+mes "but preparation is not going well.";
+next;
+mes "[Phong in Mumbaki]";
+mes "As a temporary solution, how about giving them what they want?";
+mes "Just pick among the items you have that are unimportant and give them to them.";
+next;
+mes "[Phong in Mumbaki]";
+mes "All they want is inner peace anyways.";
+mes "They give meaning to little things and find peace within that behavior.";
+next;
+mes "[Phong in Mumbaki]";
+mes "What is really important is the belief that you will be safe as long as you carry that item.";
+mes "If people can stop being afraid by holding on to your old shirt button, then that button is a Spiritual Protection.";
+next;
+mes "^A3C9FFAs Mumbaki said, giving out some items to serve as a Spiritual Protection would be a good idea.";
+mes "What would be adequate as a Spiritual Protection..^000000";
+next;
+switch(select("Holy Water!:Holy magical item Blue Gemstone?!:Writing utensils or school supplies")) {
+case 1:
+mes "[Phong in Mumbaki]";
+mes "The name itself suggests holiness.";
+mes "It was blessed by the Holy Water, yes?";
+mes "Not bad.";
+mes "Is there another? Something more persuading would be nice.";
+next;
+switch(select("Talk about Blue Gemstone.")) {
+case 1:
+//Blank..
+}
+
+case 2:
+mes "[Phong in Mumbaki]";
+mes "Aha... a stone that disappears after absorbing the curse or magical affect instead of the holder.";
+mes "Used in holy magic?";
+mes "But it does not sound so holy though.";
+next;
+switch(select("Talk about the Holy Water.")) {
+//Blank..
+}
+
+case 3:
+mes "[Phong in Mumbaki]";
+mes "Hmm? It isn't too bad if you are always going to carry it around.";
+mes "But I think something that looks more persuading would be better.";
+next;
+mes "[Phong in Mumbaki]";
+mes "It would be better is there is a holy feel to it...";
+mes "Do you have something that was blessed by your god?";
+next;
+switch(select("Holy Water or Blue Gemstone?")) {
+case 1:
+mes "[Phong in Mumbaki]";
+mes "The name itself suggests holiness.";
+mes "It was blessed by the Holy Water, yes?";
+mes "Stone that protects the bearer...";
+mes "Sounds perfect.";
+next;
+mes "[Phong in Mumbaki]";
+mes "Can you find Holy Water and Blue Gemstone that you spoke of?";
+mes "While I'm working on the Spiritual Protection, you can give out the Holy Artifacts.";
+next;
+mes "[Phong in Mumbaki]";
+mes "People's trust toward you will grow stronger if you do that.";
+mes "They will trust and listen to you.";
+mes "Yes, because you will become their heart's savior.";
+next;
+mes "Listening to Phong in Mumbaki, you decided to give out Holy Water and Blue Gemstone to the villagers.";
+completequest 7358;
+setquest 7351;
+close;
+}
+}
+
+case 2:
+mes "[Phong in Mumbaki]";
+mes "Is that so?";
+mes "Tell me if anything happens.";
+mes "For you, it'll be my pleasure to lend you a hand";
+close;
+}
+}
+
+if (checkquest(7350)==2){
+mes "Everyone in the village witnessed how strong and pure your soul is.";
+mes "Do not be afraid of the dark.";
+close;
+}
+
+mes "[Phong in Mumbaki]";
+mes "Looks like this soul came across a big body of water.";
+mes "Young friend.";
+mes "The reason you found me... yes... I see.";
+next;
+mes "[Phong in Mumbaki]";
+mes "You don't have to say it in words.";
+mes "The people are overly cautious of you.";
+mes "Rodel was probably concerned about it, so he sent you here.";
+next;
+mes "[Phong in Mumbaki]";
+mes "Nonetheless, good to meet you, young friend.";
+mes "Don't blame the villagers too much for their attitudes toward you.";
+next;
+mes "[Phong in Mumbaki]";
+mes "We are always surrounded by spirits.";
+mes "We live with them, praying for peace.";
+mes "But recently, there has been a problem.";
+next;
+mes "[Phong in Mumbaki]";
+mes "For some unknown reason,";
+mes "Spirits have been running amok, and evil sprits have been haunting the villagers.";
+next;
+mes "[Phong in Mumbaki]";
+mes "This is the shadow that is cast on this beautiful town.";
+mes "They are cautious because they don't know when the dark shadow will fall on them.";
+mes "They visit without warning.";
+next;
+mes "^BlueStart-Phong in Mumbaki-End turns his head and dark shadows appear.";
+mes "People are in panic, everyone trembling with fear.";
+next;
+	switch(select("Step toward the shadow.:Draw weapon.")) {
+		case 1:
+			mes "[Phong in Mumbaki]";
+			mes "They have followed the trace of the outsider. ";
+			mes "Don't get to close too them.";
+			mes "Your soul can get absorbed.";
+			next;
+			mes "[Phong in Mumbaki]";
+			mes "Hmm? They are responding.";
+			mes "I don't understand? They look scared as if facing a powerful soul.";
+			mes "This feeling... it can't be...";
+			next;
+			mes "Like words of Phong in Mumbaki, spirits are responding to something, hesitating.";
+			mes "Observing their reaction, you get closer. The spirits are flustered.";
+			next;
+			mes "[Phong in Mumbaki]";
+			mes "Amazing. Holder of a soul so strong and pure...!";
+			mes "the dark spirits have disappeared because of your presence.";
+			next;
+			mes "[Phong in Mumbaki]";
+			mes "I think other villagers would treat you differently now...";
+			mes "Haven't we all witnessed this miracle?";
+			next;
+			mes "[Phong in Mumbaki]";
+			mes "Young friend. Your presence is welcomed anywhere.";
+			mes "The light from your pure soul will protect you from the darkness.";
+			if (checkquest(7350)==-1)
+			setquest 7350;
+			completequest 7350;
+			close;
+		break;
+
+		case 2:
+			mes "UnknownLOL";
+		close;
+	}
+}
+
+malaya,223,267,3	script	Talah#mal	909,{
+if (checkquest(7351)==2){
+mes "[Talah]";
+mes "I dont know for sure";
+mes "but I get a warm feel from them.";
+mes "Daddy's braver now and that makes Talah stronger too.";
+close;
+}
+if (checkquest(7351)==1){
+callfunc "HelloMalQuestBHCheck";
+mes "[Talah]";
+mes ".... Can I say hello?";
+mes "Hello... there...";
+next;
+switch(select("Give the prepared items.")) {
+case 1:
+mes "[Talah]";
+mes "Pretty blue stones...!";
+mes "Oooooh~ They're beautiful!";
+mes "Is this stone going to keep Talah safe?";
+next;
+mes "- Delivered the Holy Water and Blue Gemstone to Talah.-";
+delitem 523,1;
+delitem 717,1;
+setquest 7363;
+completequest 7363;
+close;
+}
+}
+
+if (checkquest(7350)==2){
+mes "[Talah]";
+mes "....I..umm... that.....";
+mes ".........oh... Daddy....";
+next;
+mes "[Romel]";
+mes "Hey, could you give my daughter a button or some hair of yours?";
+mes "She has trouble sleeping at night .......";
+next;
+mes "[Romel]";
+mes "Wouldn't she be able to sleep well if she had something from you as a lucky charm?";
+next;
+mes "-The troubled villagers desire your belongings because you fend off the ghosts. -";
+setquest 7356;
+completequest 7356;
+callfunc "HelloMalQuestCheck";
+close;
+}
+mes "..........gasp";
+mes "";
+mes "(When your eyes met with hers, she ran and hid behind her father.)";
+close;
+}
+
+malaya,224,267,3	script	Romel#mal	573,{
+if (checkquest(7364)==2){
+mes "[Romel]";
+mes "Frankly speaking, it's for the peace of mind.";
+mes "With it, I could face them with more boldness.";
+next;
+mes "[Romel]";
+mes "I mean, I'm relying on such items,";
+mes "but I am braver with them.";
+close;
+}
+
+if (checkquest(7351)==1){
+callfunc "HelloMalQuestBHCheck";
+mes "[Romel]";
+mes "...What is it?";
+next;
+switch(select("Hand him the prepared items")) {
+case 1:
+mes "[Romel]";
+mes "Oh... Thank you.";
+mes "I can feel your spirit.";
+mes "This will keep me safe.";
+next;
+mes "[Romel]";
+mes "Hey... Could you give some for my daughter as well?";
+next;
+mes "- Gave Romel the prepared Holy Water and Blue Gemstone.-";
+delitem 523,1;
+delitem 717,1;
+setquest 7364;
+completequest 7364;
+close;
+}
+}
+
+if (checkquest(7350)==2){
+mes "[Romel]";
+mes "Ahh....";
+mes "... You..";
+mes "I'm sorry I ignored you.";
+mes "But... you must be the one they're talking about...";
+next;
+mes "[Romel]";
+mes "Are you the one who fends off the ghosts?";
+mes "If it's okay with you, can I have one of your belongings or some hair?";
+next;
+mes "[Romel]";
+mes "I want to carry it... Like a charm of sort.";
+next;
+mes "-The troubled villagers desire your belongings because you fend off the ghosts. -";
+setquest 7357;
+completequest 7357;
+callfunc "HelloMalQuestCheck";
+close;
+}
+mes ".........";
+mes "";
+mes "(He evades your gaze and ignores you.)";
+close;
+}
+
+malaya,119,217,3	script	Blacksmith Pandoi#mal	909,{
+if (checkquest(7354)==2){
+mes "[Pandoi]";
+mes "Please..";
+mes "Couldn't you help a guy out here, just for the sake of it?";
+mes "Do you really think ignoring me is the best option?!";
+next;
+mes "[Pandoi]";
+mes "Now look here.";
+mes "Please give me just a peek..";
+mes "It's just a button...";
+close;
+}
+if (checkquest(7350)==2){
+mes "[Pandoi]";
+mes "Hello there!";
+mes "I've heard of your prestige.";
+mes "I was wondering if I could receive something to prove that I've met you in person...";
+next;
+mes "[Pandoi]";
+mes "Oh... You're surprised because I'm suddenly so nice to you.";
+mes "I heard the news you fought off the ghosts.";
+mes "That's brilliant!";
+next;
+mes "[Pandoi]";
+mes "With an item of your spirit, it would scare away the ghosts, wouldn't it?";
+mes "Please, be generous, I beg you...";
+next;
+setquest 7354;
+completequest 7354;
+mes "-The troubled villagers desire your belongings because you fend off the ghosts. -";
+callfunc "HelloMalQuestCheck";
+close;
+}
+mes "[Pandoi]";
+mes "...Gasp!";
+mes "Go... Go away!";
+close;
+}
+
+malaya,181,353,3	script	Old Man Nardo#mal	909,{
+if (checkquest(7360)==2){
+mes "[Old Man Nardo]";
+mes "To be honest, I do not believe that this Holy Artifact has any abilities.";
+mes "It's just for the peace of mind.";
+next;
+mes "[Old Man Nardo]";
+mes "Nevertheless, I see you differently now";
+mes "To exclude just because someone's an outsider doesn't seem like a good idea anymore.";
+mes "I'm sorry I ignored you.";
+close;
+}
+
+if (checkquest(7351)==1){
+	if(countitem(717)<1 && countitem(523)<1)
+	mes "^2652FFPrepare and give Blue Gemstone and Holy Water.^000000";
+	close;
+	}
+mes "[Old Man Nardo]";
+mes "So, changed your mind about sharing your spirit?";
+next;
+switch(select("Hand over the prepared items.")) {
+case 1:
+mes "[Old Man Nardo]";
+mes "Ahh... Thank you.";
+mes "Now I can be at peace for some time...";
+mes "...Peace is always good. Yes.";
+next;
+mes "- Gave Holy Water and Blue Gemstone to Old Man Nardo.-";
+delitem 523,1;
+delitem 717,1;
+setquest 7360;
+completequest 7360;
+close;
+}
+
+if (checkquest(7353)==2){
+mes "[Old Man Nardo]";
+mes "How about lending a hand for a poor old man?";
+mes "I don't care if it's just a sleeve of your shirt, just give me something with your vigor.";
+next;
+mes "[Old Man Nardo]";
+mes "You know, I've not long to go now...";
+mes "Help me be at peace along the way.";
+close;
+} else if (checkquest(7350)==2){
+mes "[Old Man Nardo]";
+mes "Y... You!!";
+mes "You're the young one with such strong spirit to fend off ghosts of darkness?!";
+mes "Would it be... Possible to share some of your spirit with me?";
+next;
+mes "[Old Man Nardo]";
+mes "I have trouble sleeping because of the mischievous ghosts around town, and my back hurts when it rains.";
+next;
+mes "[Old Man Nardo]";
+mes "Please share that miraculous spirit of yours with me.";
+mes "How about just a button of yours?";
+next;
+mes "-The troubled villagers desire your belongings because you fend off the ghosts. -";
+setquest 7353;
+completequest 7353;
+callfunc "HelloMalQuestCheck";
+close;
+}
+
+mes "[Old Man Nardo]";
+mes ".......";
+mes "Not from around here, I see. I have nothing to say.";
+close;
+}
+
+malaya,326,68,1	script	Pedro the Sailor#mal	100,{
+
+if (checkquest(7350)==2){
+mes "[Pedro the Sailor]";
+mes "Oh, you're th... The one who fends off ghosts at the wave of a hand?!";
+mes "Could you stay for a bit and hear me out?!";
+next;
+switch(select("Sorry:Sure.")) {
+case 1:
+mes "[Pedro the Sailor]";
+mes "Oh, a solid denial.";
+mes "You just impaled my last glimpse of hope.";
+mes "Maybe I wasn't persuasive enough...";
+break;
+case 2:
+mes "[Pedro the Sailor]";
+mes "Straight to the point, this town is a den of ghosts!";
+mes "Sigh... I've been a sailor for quite a while and went to a lot of places, but this I never experienced before.";
+next;
+mes "[Pedro the Sailor]";
+mes "You see that ship there?";
+mes "It's a small ferry, but it also stopped service because of these darn ghosts!";
+next;
+mes "[Pedro the Sailor]";
+mes "It looks okay from the outside, but it's full of ghost, I tell ya.";
+mes "But the way I heard it, they're afraid of you, right?";
+next;
+switch(select("Oh no, you too...:Not my buttons!")) {
+case 1:
+mes "[Pedro the Sailor]";
+mes "I see many have already asked you for some of your stuff for charms, huh.";
+mes "Can I budge in that line too?";
+next;
+mes "[Pedro the Sailor]";
+mes "I need to have some sincere conversations with that ghost over there.";
+mes "But the spirit is too strong for me to approach.";
+next;
+mes "[Pedro the Sailor]";
+mes "...........That was a lame story.";
+mes "And it's not easy to give away your stuff to someone else.";
+next;
+mes "- Pedro the Sailor seems to have given up, but he can't take his gaze off of me.-";
+setquest 7352;
+completequest 7352;
+callfunc "HelloMalQuestCheck";
+close;
+case 2:
+mes "[Pedro the Sailor]";
+mes "I see many have already asked you for some of your stuff for charms, huh.";
+mes "Can I budge in that line too?";
+next;
+mes "[Pedro the Sailor]";
+mes "I need to have some sincere conversations with that ghost over there.";
+mes "But the spirit is too strong for me to approach.";
+next;
+mes "[Pedro the Sailor]";
+mes "...........That was a lame story.";
+mes "And it's not easy to give away your stuff to someone else.";
+next;
+mes "- Pedro the Sailor seems to have given up, but he can't take his gaze off of me.-";
+setquest 7352;
+completequest 7352;
+callfunc "HelloMalQuestCheck";
+close;
+}
+}
+}
+
+mes "Oh... This ship's not in service.";
+mes "Or rather, it can't set sail. *Snigger*";
+mes "I'm seeing ghosts. I think it's my time to die.";
+close;
+}

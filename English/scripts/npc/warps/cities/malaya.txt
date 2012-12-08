@@ -1,0 +1,78 @@
+//Portals
+malaya,309,70,0	warp	mal001	2,2,ma_in01,108,92 //Ship Ghost
+
+malaya,370,277,0	warp	malfd01	2,2,ma_fild01,40,272
+ma_fild01,37,272,0	warp	mald01	2,2,malaya,367,277
+
+// malaya,178,211,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// } 
+
+// malaya,112,212,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
+
+// malaya,299,167,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
+
+// malaya,300,211,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
+
+// malaya,300,211,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
+
+// malaya,300,211,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
+
+malaya,300,211,3	script	Unknown Portal	909,2,2,{
+OnTouch:
+if (checkquest(7350) == 2)
+warp  "ma_in01",33,152;
+else
+mes "Door is closed. It seems keeping its eyes on you.";
+close;
+}
+//Clones needed here.
+
+// malaya,261,240,3	script	Unknown Portal	909,2,2,{
+// OnTouch:
+// if (checkquest(????)==??)
+// warp  "????","??",,"??",;
+// else
+// mes "Door is closed. It seems keeping its eyes on you.";
+// close;
+// }
